@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Roman Empire</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+
+<body>
+    <!-- Header section with Bootstrap Navbar -->
+    <header id="main-header" class="bg-light py-3">
+        <div class="container-fluid">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <a class="navbar-brand" href="#">The Roman Empire</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item"><a class="nav-link" href="home.html">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="republic.html">The Republic</a></li>
+                        <li class="nav-item"><a class="nav-link" href="empire.html">The Empire</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="container my-5">
+            <!-- Main content section with Bootstrap grid -->
+            <section id="empire-section" class="my-5 py-lg-4">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <h2 class="mb-4">Overview</h2>
+                        <p class="mb-3">The Roman Empire was the post-Republican period of ancient Rome, founded in 27 BC and lasting until the fall of the Western Roman Empire in AD 476.</p>
+                    </div>
+                </div>
+
+                <h3 class="mb-4">Gallery of Emperors</h3>
+                <p class="mb-3">Hover over each image to reveal the emperor's name.</p>
+                <div class="row">
+                    <div class="col-lg-3 col-md-6 col-sm-12 text-center mb-4">
+                        <figure>
+                            <img src="assets/augustus.png" alt="Augustus" class="img-fluid emperor-image">
+                            <figcaption class="caption-hidden">Augustus</figcaption>
+                        </figure>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-12 text-center mb-4">
+                        <figure>
+                            <img src="assets/tyberius.png" alt="Tiberius" class="img-fluid emperor-image">
+                            <figcaption class="caption-hidden">Tiberius</figcaption>
+                        </figure>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-12 text-center mb-4">
+                        <figure>
+                            <img src="assets/caligula.png" alt="Caligula" class="img-fluid emperor-image">
+                            <figcaption class="caption-hidden">Caligula</figcaption>
+                        </figure>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-12 text-center mb-4">
+                        <figure>
+                            <img src="assets/claudius.png" alt="Claudius" class="img-fluid emperor-image">
+                            <figcaption class="caption-hidden">Claudius</figcaption>
+                        </figure>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer section with Bootstrap spacing -->
+    <footer class="bg-light py-3 text-center">
+        <p class="mb-0">Bakhytzhan</p>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        var images = document.querySelectorAll('.emperor-image');
+        images.forEach(image => {
+            image.addEventListener('mouseenter', function() {
+                this.nextElementSibling.classList.remove('caption-hidden');
+            });
+            image.addEventListener('mouseleave', function() {
+                this.nextElementSibling.classList.add('caption-hidden');
+            });
+        });
+    </script>
+</body>
+
+</html>
