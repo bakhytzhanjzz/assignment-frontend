@@ -1,0 +1,187 @@
+/* General body styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    margin: 0;
+    padding: 0;
+}
+
+#intro-section {
+    position: relative;
+    height: 400px;
+    background: url('assets/background.jpg') no-repeat center center/cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff; 
+}
+
+#intro-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); 
+    z-index: 1;
+}
+
+.intro-content {
+    position: relative;
+    z-index: 2;
+}
+
+#intro-section h2 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+#intro-section p {
+    font-size: 1.25rem;
+    margin-bottom: 1.5rem;
+    color: #fff;
+}
+
+#intro-section .btn-primary {
+    background-color: #8B0000; /* Dark Red Button */
+    border-color: #8B0000; /* Match border with button */
+    color: #fff;
+    padding: 0.75rem 1.5rem;
+    font-size: 1.2rem;
+}
+
+#intro-section .btn-primary:hover {
+    background-color: #A52A2A; /* Lighter Red on Hover */
+    border-color: #A52A2A;
+}
+
+@media (max-width: 768px) {
+    #intro-section {
+        height: 300px;
+    }
+    #intro-section h2 {
+        font-size: 2rem;
+    }
+    #intro-section p {
+        font-size: 1rem;
+    }
+    #intro-section .btn-primary {
+        padding: 0.5rem 1rem;
+        font-size: 1rem;
+    }
+}
+
+#main-header, footer {
+    background-color: #8B0000; /* Dark Red */
+    color: #8B0000; /* Gold Yellow */
+    padding: 20px;
+}
+
+#main-header h1, footer p {
+    font-size: 2.5rem;
+    color: #8B0000; /* Gold Yellow */
+    margin: 0;
+}
+
+#navbar .nav-link {
+    color: #8B0000; /* Gold Yellow */
+    font-size: 1.1rem;
+    padding: 0.5rem 1rem;
+}
+
+#navbar .nav-link:hover {
+    color: #8B0000; /* Lighter Gold for hover effect */
+}
+
+/* Timeline section */
+.timeline-hidden {
+    display: none;
+}
+
+/* Emperor captions hidden by default */
+.caption-hidden {
+    display: none;
+}
+
+/* Gallery image styling */
+.emperor-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Button styling */
+button#timeline-btn {
+    cursor: pointer;
+}
+
+footer {
+    background-color: #8B0000;
+    color: #8B0000; 
+    padding: 1rem 0;
+    text-align: center;
+    font-size: 10px;
+}
+
+
+@media (max-width: 576px) {
+    header, footer {
+        text-align: center;
+    }
+}
+
+/* Uniform size for carousel images */
+.carousel-item img {
+    width: 100%;
+    height: 400px; /* Set a fixed height */
+    object-fit: cover; /* Ensures the image maintains its aspect ratio and covers the entire area */
+}
+
+/* Uniform size for card images */
+.card img {
+    width: 100%;
+    height: 250px; /* Adjust this to your desired size */
+    object-fit: cover; /* Ensures the image fills the card while maintaining aspect ratio */
+}
+
+form {
+    background-color: #f4f4f4;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 80%;
+    margin: 0 auto;
+}
+
+form h3 {
+    color: #8B0000;
+    font-size: 2rem;
+}
+
+form label {
+    font-weight: bold;
+}
+
+form input, form select {
+    width: 80%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+form button {
+    background-color: #8B0000;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+form button:hover {
+    background-color: #A52A2A;
+}

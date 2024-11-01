@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Roman Republic</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+    <header id="main-header" class="bg-light py-3">
+        <div class="container-fluid">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <a class="navbar-brand" href="#">The Roman Republic</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item"><a class="nav-link" href="home.html">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="republic.html">The Republic</a></li>
+                        <li class="nav-item"><a class="nav-link" href="empire.html">The Empire</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="container my-5">
+            <section id="republic-section" class="my-5 py-lg-4">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <h2 class="mb-4">Overview</h2>
+                        <p class="mb-3">The Roman Republic was a period of ancient Roman civilization beginning with the overthrow of the Roman Kingdom in 509 BC and ending in 27 BC with the establishment of the Roman Empire.</p>
+                    </div>
+                    <div class="col-lg-6">
+                        <h3 class="mb-4">Interactive Timeline</h3>
+                        <p class="mb-3">Click the button to reveal key events in the Roman Republic.</p>
+                        <button id="timeline-btn" class="btn btn-primary mb-4">Show Timeline</button>
+                        <ul id="timeline" class="timeline-hidden list-group">
+                            <li class="list-group-item">509 BC - The Roman Republic is founded</li>
+                            <li class="list-group-item">451 BC - The Twelve Tables of Roman Law are established</li>
+                            <li class="list-group-item">264-146 BC - The Punic Wars</li>
+                            <li class="list-group-item">44 BC - Assassination of Julius Caesar</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section id="todo-section" class="my-5">
+                <h3 class="mb-4">Interactive To-Do List</h3>
+                <div class="input-group mb-3">
+                    <input type="text" id="new-task" class="form-control" placeholder="Enter new task">
+                    <div class="input-group-append">
+                        <button id="add-task-btn" class="btn btn-success">Add Task</button>
+                    </div>
+                </div>
+                <ul id="task-list" class="list-group"></ul>
+            </section>
+
+            <section id="sort-section" class="my-5">
+                <h3 class="mb-4">Number Sorting Tool</h3>
+                <form id="sort-form">
+                    <div class="form-group">
+                        <label for="number-input">Enter numbers separated by commas:</label>
+                        <input type="text" id="number-input" class="form-control" placeholder="e.g. 3,1,4,1,5,9">
+                    </div>
+                    <button id="sort-asc-btn" class="btn btn-primary mb-2" type="button">Sort Ascending</button>
+                    <button id="sort-desc-btn" class="btn btn-secondary mb-2" type="button">Sort Descending</button>
+                </form>
+                <p>Sorted Numbers: <span id="sorted-numbers"></span></p>
+            </section>
+        </div>
+    </main>
+
+    <footer class="bg-light py-3 text-center">
+        <p class="mb-0">Bakhytzhan</p>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+        document.getElementById("timeline-btn").addEventListener("click", function () {
+            var timeline = document.getElementById("timeline");
+            timeline.classList.toggle("timeline-hidden");
+        });
+
+        const addTaskBtn = document.getElementById("add-task-btn");
+        const taskList = document.getElementById("task-list");
+
+        addTaskBtn.addEventListener("click", function () {
+            const newTaskInput = document.getElementById("new-task");
+            const taskValue = newTaskInput.value.trim();
+
+            if (taskValue) {
+                const li = document.createElement("li");
+                li.classList.add("list-group-item");
+                li.innerHTML = `${taskValue} <button class="btn btn-danger btn-sm float-right delete-task">Delete</button>`;
+                taskList.appendChild(li);
+                newTaskInput.value = "";
+
+                li.querySelector(".delete-task").addEventListener("click", function () {
+                    taskList.removeChild(li);
+                });
+            } else {
+                alert("Task cannot be empty!");
+            }
+        });
+
+        const sortAscBtn = document.getElementById("sort-asc-btn");
+        const sortDescBtn = document.getElementById("sort-desc-btn");
+
+        function sortNumbers(order) {
+            const input = document.getElementById("number-input").value.trim();
+            if (!input) {
+                alert("Please enter numbers.");
+                return;
+            }
+
+            const numbers = input.split(",").map(num => {
+                const parsed = parseFloat(num.trim());
+                if (isNaN(parsed)) {
+                    alert("Invalid input. Please enter valid numbers.");
+                    return;
+                }
+                return parsed;
+            });
+
+            if (order === "asc") {
+                numbers.sort((a, b) => a - b);
+            } else {
+                numbers.sort((a, b) => b - a);
+            }
+
+            document.getElementById("sorted-numbers").innerText = numbers.join(", ");
+        }
+
+        sortAscBtn.addEventListener("click", function () {
+            sortNumbers("asc");
+        });
+
+        sortDescBtn.addEventListener("click", function () {
+            sortNumbers("desc");
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Roman Empire</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        /* CSS for image hover animation */
+        .caption-hidden {
+            display: none; /* Initially hide captions */
+            transition: opacity 0.5s ease;
+        }
+
+        .emperor-image:hover + .caption-hidden {
+            display: block; /* Show caption on hover */
+            opacity: 1; /* Fade in effect */
+        }
+
+        /* Add a transition effect when changing the background color */
+        body {
+            transition: background-color 0.5s ease;
+        }
+    </style>
+</head>
+
+<body>
+    <header id="main-header" class="bg-light py-3">
+        <div class="container-fluid">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <a class="navbar-brand" href="#">The Roman Empire</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item"><a class="nav-link" href="home.html">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="republic.html">The Republic</a></li>
+                        <li class="nav-item"><a class="nav-link" href="empire.html">The Empire</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="container my-5">
+            <section id="empire-section" class="my-5 py-lg-4">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <h2 class="mb-4">Overview</h2>
+                        <p class="mb-3">The Roman Empire was the post-Republican period of ancient Rome, founded in 27 BC and lasting until the fall of the Western Roman Empire in AD 476.</p>
+                    </div>
+                </div>
+
+                <h3 class="mb-4">Gallery of Emperors</h3>
+                <p class="mb-3">Hover over each image to reveal the emperor's name.</p>
+                <div class="row" id="emperor-gallery">
+                    <!-- Emperors will be populated dynamically -->
+                </div>
+
+                <div class="text-center my-5">
+                    <button id="change-bg-btn" class="btn btn-primary">Change Background Color</button>
+                </div>
+
+                <div class="text-center my-5">
+                    <h3>Current Date and Time</h3>
+                    <p id="date-time"></p>
+                </div>
+            </section>
+        </div>
+
+    </main>
+
+    <footer class="bg-light py-3 text-center">
+        <p class="mb-0">Bakhytzhan</p>
+    </footer>
+
+    <audio id="click-sound" src="assets/click.mp3"></audio> <!-- Sound effect -->
+
+    <script src="script.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        // Data Structure for emperors
+        const emperors = [
+            { name: "Augustus", image: "assets/augustus.png" },
+            { name: "Tiberius", image: "assets/tyberius.png" },
+            { name: "Caligula", image: "assets/caligula.png" },
+            { name: "Claudius", image: "assets/claudius.png" }
+        ];
+
+        // Function to populate the emperor gallery
+        function populateEmperorGallery() {
+            const gallery = document.getElementById('emperor-gallery');
+            emperors.forEach(emperor => {
+                const col = document.createElement('div');
+                col.className = 'col-lg-3 col-md-6 col-sm-12 text-center mb-4';
+                col.innerHTML = `
+                    <figure>
+                        <img src="${emperor.image}" alt="${emperor.name}" class="img-fluid emperor-image">
+                        <figcaption class="caption-hidden">${emperor.name}</figcaption>
+                    </figure>
+                `;
+                gallery.appendChild(col);
+            });
+        }
+
+        // Change background color and play sound
+        document.getElementById('change-bg-btn').addEventListener('click', function () {
+            const colors = ['#f8f9fa', '#e9ecef', '#dee2e6', '#ced4da', '#adb5bd'];
+            document.body.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+            document.getElementById('click-sound').play(); // Play sound effect
+        });
+
+        // Display current date and time
+        function displayDateTime() {
+            const now = new Date();
+            document.getElementById('date-time').textContent = now.toLocaleString();
+        }
+
+        // Initialize the page
+        populateEmperorGallery();
+        displayDateTime();
+        setInterval(displayDateTime, 1000); // Update time every second
+    </script>
+</body>
+
+</html>
